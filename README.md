@@ -19,6 +19,36 @@ Unlike appearance-driven methods that analyze how images look, RA-Det examines h
    - **Discrepancy features** (distance, similarity, covariance) between clean and perturbed embeddings
    - **Low-level residual features** for high-frequency artifacts
 
+### Main Results
+- Evaluated on 14+ diverse generative models
+- Outperforms 10+ existing detection methods
+- Achieves **7.81% average performance improvement**
+- Data- and model-agnostic, transfers across unseen generators
+
+---
+
+## Quick Start
+
+### Training
+
+Use `scripts/main.sh` for distributed training:
+
+```bash
+# 8 GPUs, default settings (eps=16/255, margin=1.0)
+bash scripts/main.sh --gpus 8 --niter 1
+```
+
+**Important**: The recommended **batch size is 256** (32 per GPU x 8 GPUs). Small batch sizes significantly degrade performance due to the statistics-based discrepancy features.
+
+### Validation
+
+Use `scripts/validate.sh` for evaluation:
+
+```bash
+# Validate with default checkpoint
+bash scripts/validate.sh --gpus 8
+```
+
 ---
 
 ## Setup
@@ -66,44 +96,6 @@ git clone https://github.com/facebookresearch/dinov3.git dinov3_repo
 
 ---
 
-## Quick Start
-
-### Training
-
-Use `scripts/main.sh` for distributed training:
-
-```bash
-# 8 GPUs, default settings (eps=16/255, margin=1.0)
-bash scripts/main.sh --gpus 8 --niter 1
-```
-
-**Important**: The recommended **batch size is 256** (32 per GPU x 8 GPUs). Small batch sizes significantly degrade performance due to the statistics-based discrepancy features.
-
-### Validation
-
-Use `scripts/validate.sh` for evaluation:
-
-```bash
-# Validate with default checkpoint
-bash scripts/validate.sh --gpus 8
-```
-
----
-
-## Training Details
-
-### Key Hyperparameters
-
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `--eps` | 16/255 | Perturbation budget (epsilon) |
-| `--margin` | 1.0 | Margin for discrepancy loss |
-| `--niter` | 1 | Training epochs |
-| `--gpus` | 8 | Number of GPUs |
-| Batch size | 256 | **Important: 256 recommended** |
-
----
-
 ## Training Details
 
 ### Key Hyperparameters
@@ -120,29 +112,36 @@ bash scripts/validate.sh --gpus 8
 
 RA-Det uses statistics-based discrepancy features (covariance, distance) that require sufficient samples for stable estimation. **Batch size 256 is strongly recommended** - smaller batches lead to noisy statistics and degraded detection performance.
 
+### Advanced Options
+
+Edit `scripts/main.sh` or use `train.py` directly:
+
+```bash
+# Four-branch ensemble (foundation + discrepancy + low-level + L2)
+torchrun --nproc_per_node=8 train.py \
+    --config ensemble_vitl16_raw_lpd_discrepancy \
+    --four-branch-ensemble \
+    --normalize-loss
+
+# Custom epsilon
+python train.py --config ensemble_vitl16_raw_lpd_discrepancy --eps 0.0625
+```
+
 ---
 
-## Main Results
+## Citation
 
-- Evaluated on **14+ diverse generative models**
-- Outperforms **10+ existing detection methods**
-- Achieves **7.81% average performance improvement**
-- Data- and model-agnostic, transfers across unseen generators
+If you use this code, please cite:
+
+```bibtex
+@article{radet2026,
+  title={RA-Det: Towards Universal Detection of AI-Generated Images via Robustness Asymmetry},
+  author={Anonymous},
+  journal={Under Review at ICML},
+  year={2026}
+}
+```
 
 ---
 
-## Training Details
-
-### Key Hyperparameters
-
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `--eps` | 16/255 | Perturbation budget (epsilon) |
-| `--margin` | 1.0 | Margin for discrepancy loss |
-| `--niter` | 1 | Training epochs |
-| `--gpus` | 8 | Number of GPUs |
-| Batch size | 256 | **Important: 256 recommended** |
-
-### Why Batch Size Matters
-
-RA-Det uses statistics-based discrepancy features (covariance, distance) that require sufficient samples for stable estimation. **Batch size 256 is strongly recommended** - smaller batches lead to noisy statistics and degraded detection performance.
+**Note**: This is a preliminary version under review. Do not distribute.
