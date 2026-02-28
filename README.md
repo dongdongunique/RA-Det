@@ -18,3 +18,48 @@ Unlike appearance-driven methods that analyze how images look, RA-Det examines h
    - **Semantic features** from frozen foundation models (DINOv3)
    - **Discrepancy features** (distance, similarity, covariance) between clean and perturbed embeddings
    - **Low-level residual features** for high-frequency artifacts
+
+---
+
+## Setup
+
+### Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+### Data Preparation
+
+Organize data in Wang2020 format:
+
+```
+data/
+├── progan_train/          # Training data
+│   ├── airplane/
+│   │   ├── 0_real/
+│   │   └── 1_fake/
+│   └── ...
+└── AIGCTestset/test/      # Validation data
+    ├── progan/
+    ├── stable_diffusion_v_1_4/
+    ├── DALLE2/
+    └── ...
+```
+
+Update paths in `paths.py`:
+```python
+PROGAN_TRAIN_DATA_PATH = "/path/to/progan_train"
+AIGCTEST_DATA_PATH = "/path/to/AIGCTestset/test"
+```
+
+### Model Preparation
+
+Download DINOv3 pretrained weights and place in `models/dino/`:
+- `dinov3_vitl16_pretrain.pth`
+
+Clone DINOv3 repository:
+```bash
+cd models
+git clone https://github.com/facebookresearch/dinov3.git dinov3_repo
+```
