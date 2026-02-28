@@ -1,0 +1,17 @@
+# RA-Det Requirements
+# Install with: pip install -r requirements.txt
+
+# Core
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Data processing
+Pillow>=9.0.0
+numpy>=1.21.0
+
+# Metrics & evaluation
+scikit-learn>=1.0.0
+scipy>=1.7.0
+
+# Progress bars
+tqdm>=4.62.0
