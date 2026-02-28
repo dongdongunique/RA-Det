@@ -87,3 +87,62 @@ Use `scripts/validate.sh` for evaluation:
 # Validate with default checkpoint
 bash scripts/validate.sh --gpus 8
 ```
+
+---
+
+## Training Details
+
+### Key Hyperparameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `--eps` | 16/255 | Perturbation budget (epsilon) |
+| `--margin` | 1.0 | Margin for discrepancy loss |
+| `--niter` | 1 | Training epochs |
+| `--gpus` | 8 | Number of GPUs |
+| Batch size | 256 | **Important: 256 recommended** |
+
+---
+
+## Training Details
+
+### Key Hyperparameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `--eps` | 16/255 | Perturbation budget (epsilon) |
+| `--margin` | 1.0 | Margin for discrepancy loss |
+| `--niter` | 1 | Training epochs |
+| `--gpus` | 8 | Number of GPUs |
+| Batch size | 256 | **Important: 256 recommended** |
+
+### Why Batch Size Matters
+
+RA-Det uses statistics-based discrepancy features (covariance, distance) that require sufficient samples for stable estimation. **Batch size 256 is strongly recommended** - smaller batches lead to noisy statistics and degraded detection performance.
+
+---
+
+## Main Results
+
+- Evaluated on **14+ diverse generative models**
+- Outperforms **10+ existing detection methods**
+- Achieves **7.81% average performance improvement**
+- Data- and model-agnostic, transfers across unseen generators
+
+---
+
+## Training Details
+
+### Key Hyperparameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `--eps` | 16/255 | Perturbation budget (epsilon) |
+| `--margin` | 1.0 | Margin for discrepancy loss |
+| `--niter` | 1 | Training epochs |
+| `--gpus` | 8 | Number of GPUs |
+| Batch size | 256 | **Important: 256 recommended** |
+
+### Why Batch Size Matters
+
+RA-Det uses statistics-based discrepancy features (covariance, distance) that require sufficient samples for stable estimation. **Batch size 256 is strongly recommended** - smaller batches lead to noisy statistics and degraded detection performance.
