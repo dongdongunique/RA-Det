@@ -137,7 +137,7 @@ If you use this code, please cite:
 @article{radet2026,
   title={RA-Det: Towards Universal Detection of AI-Generated Images via Robustness Asymmetry},
   author={Anonymous},
-  journal={Under Review at ICML},
+  journal={Under Review},
   year={2026}
 }
 ```
