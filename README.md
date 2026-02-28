@@ -63,3 +63,27 @@ Clone DINOv3 repository:
 cd models
 git clone https://github.com/facebookresearch/dinov3.git dinov3_repo
 ```
+
+---
+
+## Quick Start
+
+### Training
+
+Use `scripts/main.sh` for distributed training:
+
+```bash
+# 8 GPUs, default settings (eps=16/255, margin=1.0)
+bash scripts/main.sh --gpus 8 --niter 1
+```
+
+**Important**: The recommended **batch size is 256** (32 per GPU x 8 GPUs). Small batch sizes significantly degrade performance due to the statistics-based discrepancy features.
+
+### Validation
+
+Use `scripts/validate.sh` for evaluation:
+
+```bash
+# Validate with default checkpoint
+bash scripts/validate.sh --gpus 8
+```
