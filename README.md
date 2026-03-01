@@ -1,7 +1,5 @@
 # RA-Det: Robustness Asymmetry Detection for AI-Generated Images
 
-> **Preprint Version - Under Review at ICML 2026**
-
 ## Overview
 
 RA-Det is a behavior-driven framework for detecting AI-generated images based on **Robustness Asymmetry**:
@@ -142,6 +140,3 @@ If you use this code, please cite:
 }
 ```
 
----
-
-**Note**: This is a preliminary version under review. Do not distribute.
