@@ -132,11 +132,12 @@ python train.py --config ensemble_vitl16_raw_lpd_discrepancy --eps 0.0625
 If you use this code, please cite:
 
 ```bibtex
-@article{radet2026,
+@misc{wang2026radet,
   title={RA-Det: Towards Universal Detection of AI-Generated Images via Robustness Asymmetry},
-  author={Xinchang Wang, Yunhao Chen, Yuechen Zhang, Congcong Bian, Zihao Guo, Xingjun Ma, Hui Li},
-  journal={arXiv Preprint},
-  year={2026}
+  author={Xinchang Wang and Yunhao Chen and Yuechen Zhang and Congcong Bian and Zihao Guo and Xingjun Ma and Hui Li},
+  year={2026},
+  url={https://openreview.net/forum?id=zM2l4MGoeu&noteId=zM2l4MGoeu},
+  note={OpenReview Archive Direct Upload}
 }
 ```
 
