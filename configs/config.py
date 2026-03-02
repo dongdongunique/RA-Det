@@ -54,6 +54,12 @@ EXPERIMENT_CONFIGS = {
         "niter": 30,
         "batch_size": 32,
 
+        # Epsilon randomization for domain generalization
+        "eps_randomization": True,
+        "eps_min": 4/255,   # ~4/255 minimum perturbation
+        "eps_max": 32/255,  # ~32/255 maximum perturbation
+        "eps_schedule": "random",  # Random sampling per batch
+
         "data_mode": "wang2020",
         "progan_train_data_path": PROGAN_TRAIN_DATA_PATH,
 
