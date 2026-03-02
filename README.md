@@ -134,8 +134,8 @@ If you use this code, please cite:
 ```bibtex
 @article{radet2026,
   title={RA-Det: Towards Universal Detection of AI-Generated Images via Robustness Asymmetry},
-  author={Anonymous},
-  journal={Under Review},
+  author={Xinchang Wang, Yunhao Chen, Yuechen Zhang, Congcong Bian, Zihao Guo, Xingjun Ma, Hui Li},
+  journal={arXiv Preprint},
   year={2026}
 }
 ```
