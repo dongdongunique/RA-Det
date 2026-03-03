@@ -1,5 +1,12 @@
 # RA-Det: Robustness Asymmetry Detection for AI-Generated Images
 
+
+<div align="center">
+
+[![arXiv](https://img.shields.io/badge/Paper-ArXiv-blue.svg?style=for-the-badge)](https://arxiv.org/abs/2603.01544)
+
+</div>
+
 ## Overview
 
 RA-Det is a behavior-driven framework for detecting AI-generated images based on **Robustness Asymmetry**:
@@ -132,12 +139,14 @@ python train.py --config ensemble_vitl16_raw_lpd_discrepancy --eps 0.0625
 If you use this code, please cite:
 
 ```bibtex
-@misc{wang2026radet,
-  title={RA-Det: Towards Universal Detection of AI-Generated Images via Robustness Asymmetry},
-  author={Xinchang Wang and Yunhao Chen and Yuechen Zhang and Congcong Bian and Zihao Guo and Xingjun Ma and Hui Li},
-  year={2026},
-  url={https://openreview.net/forum?id=zM2l4MGoeu&noteId=zM2l4MGoeu},
-  note={OpenReview Archive Direct Upload}
+@misc{wang2026radetuniversaldetectionaigenerated,
+      title={RA-Det: Towards Universal Detection of AI-Generated Images via Robustness Asymmetry}, 
+      author={Xinchang Wang and Yunhao Chen and Yuechen Zhang and Congcong Bian and Zihao Guo and Xingjun Ma and Hui Li},
+      year={2026},
+      eprint={2603.01544},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2603.01544}, 
 }
 ```
 
